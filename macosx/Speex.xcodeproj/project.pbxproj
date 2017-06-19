@@ -10,6 +10,18 @@
 		37CA8DEB0DD73333005C8CB6 /* modes_wb.c in Sources */ = {isa = PBXBuildFile; fileRef = 37CA8DEA0DD73333005C8CB6 /* modes_wb.c */; };
 		37CA8DEC0DD73333005C8CB6 /* modes_wb.c in Sources */ = {isa = PBXBuildFile; fileRef = 37CA8DEA0DD73333005C8CB6 /* modes_wb.c */; };
 		37CA8E000DD7352A005C8CB6 /* os_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 37CA8DFF0DD7352A005C8CB6 /* os_support.h */; };
+		702EA2A71EF86916000A8E89 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 702EA2A61EF86916000A8E89 /* config.h */; };
+		702EA2B41EF88CB4000A8E89 /* getopt_win.h in Headers */ = {isa = PBXBuildFile; fileRef = 702EA2A91EF88CB4000A8E89 /* getopt_win.h */; };
+		702EA2B51EF88CB4000A8E89 /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 702EA2AA1EF88CB4000A8E89 /* getopt.c */; };
+		702EA2B61EF88CB4000A8E89 /* getopt1.c in Sources */ = {isa = PBXBuildFile; fileRef = 702EA2AB1EF88CB4000A8E89 /* getopt1.c */; };
+		702EA2B71EF88CB4000A8E89 /* skeleton.c in Sources */ = {isa = PBXBuildFile; fileRef = 702EA2AC1EF88CB4000A8E89 /* skeleton.c */; };
+		702EA2B81EF88CB4000A8E89 /* skeleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 702EA2AD1EF88CB4000A8E89 /* skeleton.h */; };
+		702EA2B91EF88CB4000A8E89 /* speexdec.c in Sources */ = {isa = PBXBuildFile; fileRef = 702EA2AE1EF88CB4000A8E89 /* speexdec.c */; };
+		702EA2BA1EF88CB4000A8E89 /* speexenc.c in Sources */ = {isa = PBXBuildFile; fileRef = 702EA2AF1EF88CB4000A8E89 /* speexenc.c */; };
+		702EA2BB1EF88CB4000A8E89 /* wav_io.c in Sources */ = {isa = PBXBuildFile; fileRef = 702EA2B01EF88CB4000A8E89 /* wav_io.c */; };
+		702EA2BC1EF88CB4000A8E89 /* wav_io.h in Headers */ = {isa = PBXBuildFile; fileRef = 702EA2B11EF88CB4000A8E89 /* wav_io.h */; };
+		702EA2BD1EF88CB4000A8E89 /* wave_out.c in Sources */ = {isa = PBXBuildFile; fileRef = 702EA2B21EF88CB4000A8E89 /* wave_out.c */; };
+		702EA2BE1EF88CB4000A8E89 /* wave_out.h in Headers */ = {isa = PBXBuildFile; fileRef = 702EA2B31EF88CB4000A8E89 /* wave_out.h */; };
 		73814B000907FB8200C478FC /* speex_header.h in Headers */ = {isa = PBXBuildFile; fileRef = 73814AF40907FB8200C478FC /* speex_header.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73814B030907FB8200C478FC /* speex_stereo.h in Headers */ = {isa = PBXBuildFile; fileRef = 73814AF70907FB8200C478FC /* speex_stereo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73814B040907FB8200C478FC /* speex_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 73814AF80907FB8200C478FC /* speex_types.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -95,11 +107,35 @@
 		BFF73DD00A78AA170078A4A8 /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = BFF73DCF0A78AA170078A4A8 /* window.c */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		702EA2A51EF86800000A8E89 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = env;
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32BAE0B70371A74B00C91783 /* Speex_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Speex_Prefix.pch; sourceTree = "<group>"; };
 		37CA8DEA0DD73333005C8CB6 /* modes_wb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = modes_wb.c; path = ../libspeex/modes_wb.c; sourceTree = SOURCE_ROOT; };
 		37CA8DFF0DD7352A005C8CB6 /* os_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = os_support.h; path = ../libspeex/os_support.h; sourceTree = SOURCE_ROOT; };
+		702EA2A61EF86916000A8E89 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../../config.h; sourceTree = "<group>"; };
+		702EA2A91EF88CB4000A8E89 /* getopt_win.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = getopt_win.h; path = ../src/getopt_win.h; sourceTree = "<group>"; };
+		702EA2AA1EF88CB4000A8E89 /* getopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = getopt.c; path = ../src/getopt.c; sourceTree = "<group>"; };
+		702EA2AB1EF88CB4000A8E89 /* getopt1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = getopt1.c; path = ../src/getopt1.c; sourceTree = "<group>"; };
+		702EA2AC1EF88CB4000A8E89 /* skeleton.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = skeleton.c; path = ../src/skeleton.c; sourceTree = "<group>"; };
+		702EA2AD1EF88CB4000A8E89 /* skeleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = skeleton.h; path = ../src/skeleton.h; sourceTree = "<group>"; };
+		702EA2AE1EF88CB4000A8E89 /* speexdec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = speexdec.c; path = ../src/speexdec.c; sourceTree = "<group>"; };
+		702EA2AF1EF88CB4000A8E89 /* speexenc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = speexenc.c; path = ../src/speexenc.c; sourceTree = "<group>"; };
+		702EA2B01EF88CB4000A8E89 /* wav_io.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wav_io.c; path = ../src/wav_io.c; sourceTree = "<group>"; };
+		702EA2B11EF88CB4000A8E89 /* wav_io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wav_io.h; path = ../src/wav_io.h; sourceTree = "<group>"; };
+		702EA2B21EF88CB4000A8E89 /* wave_out.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wave_out.c; path = ../src/wave_out.c; sourceTree = "<group>"; };
+		702EA2B31EF88CB4000A8E89 /* wave_out.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wave_out.h; path = ../src/wave_out.h; sourceTree = "<group>"; };
 		73814AEF0907FB8200C478FC /* speex.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = speex.h; sourceTree = "<group>"; };
 		73814AF00907FB8200C478FC /* speex_bits.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = speex_bits.h; sourceTree = "<group>"; };
 		73814AF10907FB8200C478FC /* speex_callbacks.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = speex_callbacks.h; sourceTree = "<group>"; };
@@ -220,6 +256,7 @@
 		0867D691FE84028FC02AAC07 /* Speex */ = {
 			isa = PBXGroup;
 			children = (
+				702EA2A81EF88C8D000A8E89 /* decoder */,
 				08FB77ACFE841707C02AAC07 /* Source */,
 				73814AEB0907FB6400C478FC /* Headers */,
 				089C1665FE841158C02AAC07 /* Resources */,
@@ -248,26 +285,12 @@
 		08FB77ACFE841707C02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				37CA8DFF0DD7352A005C8CB6 /* os_support.h */,
-				37CA8DEA0DD73333005C8CB6 /* modes_wb.c */,
 				738837460B193581005C7A69 /* _kiss_fft_guts.h */,
-				738837470B193581005C7A69 /* fftwrap.c */,
-				738837480B193581005C7A69 /* fftwrap.h */,
-				7388374B0B193581005C7A69 /* kiss_fft.c */,
-				7388374C0B193581005C7A69 /* kiss_fft.h */,
-				7388374D0B193581005C7A69 /* kiss_fftr.c */,
-				7388374E0B193581005C7A69 /* kiss_fftr.h */,
-				7388374F0B193581005C7A69 /* lsp_bfin.h */,
-				738837500B193581005C7A69 /* pseudofloat.h */,
-				738837510B193581005C7A69 /* quant_lsp_bfin.h */,
-				738837520B193581005C7A69 /* vorbis_psy.c */,
-				738837530B193581005C7A69 /* vorbis_psy.h */,
 				73814B0C0907FC9900C478FC /* arch.h */,
 				73814B0D0907FC9900C478FC /* bits.c */,
 				73814B0E0907FC9900C478FC /* cb_search_arm4.h */,
 				73814B0F0907FC9900C478FC /* cb_search_bfin.h */,
 				73814B100907FC9900C478FC /* cb_search_sse.h */,
-				BFF73DCF0A78AA170078A4A8 /* window.c */,
 				73814B110907FC9900C478FC /* cb_search.c */,
 				73814B120907FC9900C478FC /* cb_search.h */,
 				73814B130907FC9900C478FC /* exc_5_64_table.c */,
@@ -276,6 +299,8 @@
 				73814B160907FC9900C478FC /* exc_10_16_table.c */,
 				73814B170907FC9900C478FC /* exc_10_32_table.c */,
 				73814B180907FC9900C478FC /* exc_20_32_table.c */,
+				738837470B193581005C7A69 /* fftwrap.c */,
+				738837480B193581005C7A69 /* fftwrap.h */,
 				73814B190907FC9900C478FC /* filters_arm4.h */,
 				73814B1A0907FC9900C478FC /* filters_bfin.h */,
 				73814B1B0907FC9900C478FC /* filters_sse.h */,
@@ -291,9 +316,14 @@
 				73814B250907FC9900C478FC /* hexc_10_32_table.c */,
 				73814B260907FC9900C478FC /* hexc_table.c */,
 				73814B270907FC9900C478FC /* high_lsp_tables.c */,
+				7388374B0B193581005C7A69 /* kiss_fft.c */,
+				7388374C0B193581005C7A69 /* kiss_fft.h */,
+				7388374D0B193581005C7A69 /* kiss_fftr.c */,
+				7388374E0B193581005C7A69 /* kiss_fftr.h */,
 				73814B2A0907FC9900C478FC /* lpc_bfin.h */,
 				73814B2B0907FC9900C478FC /* lpc.c */,
 				73814B2C0907FC9900C478FC /* lpc.h */,
+				7388374F0B193581005C7A69 /* lsp_bfin.h */,
 				73814B2D0907FC9900C478FC /* lsp_tables_nb.c */,
 				73814B2E0907FC9900C478FC /* lsp.c */,
 				73814B2F0907FC9900C478FC /* lsp.h */,
@@ -304,10 +334,14 @@
 				73814B340907FC9900C478FC /* ltp.h */,
 				73814B380907FC9900C478FC /* math_approx.h */,
 				73814B3A0907FC9900C478FC /* misc_bfin.h */,
+				37CA8DEA0DD73333005C8CB6 /* modes_wb.c */,
 				73814B3D0907FC9900C478FC /* modes.c */,
 				73814B3E0907FC9900C478FC /* modes.h */,
 				73814B3F0907FC9900C478FC /* nb_celp.c */,
 				73814B400907FC9900C478FC /* nb_celp.h */,
+				37CA8DFF0DD7352A005C8CB6 /* os_support.h */,
+				738837500B193581005C7A69 /* pseudofloat.h */,
+				738837510B193581005C7A69 /* quant_lsp_bfin.h */,
 				73814B420907FC9900C478FC /* quant_lsp.c */,
 				73814B430907FC9900C478FC /* quant_lsp.h */,
 				73814B440907FC9900C478FC /* sb_celp.c */,
@@ -316,6 +350,7 @@
 				73814B470907FC9900C478FC /* smallft.h */,
 				73814B480907FC9900C478FC /* speex_callbacks.c */,
 				73814B490907FC9900C478FC /* speex_header.c */,
+				32BAE0B70371A74B00C91783 /* Speex_Prefix.pch */,
 				73814B4A0907FC9900C478FC /* speex.c */,
 				73814B4B0907FC9900C478FC /* stack_alloc.h */,
 				73814B4C0907FC9900C478FC /* stereo.c */,
@@ -324,14 +359,34 @@
 				73814B510907FC9900C478FC /* testenc.c */,
 				73814B520907FC9900C478FC /* vbr.c */,
 				73814B530907FC9900C478FC /* vbr.h */,
+				738837520B193581005C7A69 /* vorbis_psy.c */,
+				738837530B193581005C7A69 /* vorbis_psy.h */,
 				73814B540907FC9900C478FC /* vq_arm4.h */,
 				73814B550907FC9900C478FC /* vq_bfin.h */,
 				73814B560907FC9900C478FC /* vq_sse.h */,
 				73814B570907FC9900C478FC /* vq.c */,
 				73814B580907FC9900C478FC /* vq.h */,
-				32BAE0B70371A74B00C91783 /* Speex_Prefix.pch */,
+				BFF73DCF0A78AA170078A4A8 /* window.c */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		702EA2A81EF88C8D000A8E89 /* decoder */ = {
+			isa = PBXGroup;
+			children = (
+				702EA2A91EF88CB4000A8E89 /* getopt_win.h */,
+				702EA2AA1EF88CB4000A8E89 /* getopt.c */,
+				702EA2AB1EF88CB4000A8E89 /* getopt1.c */,
+				702EA2AC1EF88CB4000A8E89 /* skeleton.c */,
+				702EA2AD1EF88CB4000A8E89 /* skeleton.h */,
+				702EA2AE1EF88CB4000A8E89 /* speexdec.c */,
+				702EA2AF1EF88CB4000A8E89 /* speexenc.c */,
+				702EA2B01EF88CB4000A8E89 /* wav_io.c */,
+				702EA2B11EF88CB4000A8E89 /* wav_io.h */,
+				702EA2B21EF88CB4000A8E89 /* wave_out.c */,
+				702EA2B31EF88CB4000A8E89 /* wave_out.h */,
+			);
+			name = decoder;
 			sourceTree = "<group>";
 		};
 		73814AEB0907FB6400C478FC /* Headers */ = {
@@ -345,6 +400,7 @@
 		73814AEC0907FB8200C478FC /* speex */ = {
 			isa = PBXGroup;
 			children = (
+				702EA2A61EF86916000A8E89 /* config.h */,
 				73814AEF0907FB8200C478FC /* speex.h */,
 				73814AF00907FB8200C478FC /* speex_bits.h */,
 				73814AF10907FB8200C478FC /* speex_callbacks.h */,
@@ -373,7 +429,11 @@
 				73814B000907FB8200C478FC /* speex_header.h in Headers */,
 				73814B030907FB8200C478FC /* speex_stereo.h in Headers */,
 				73814B040907FB8200C478FC /* speex_types.h in Headers */,
+				702EA2B41EF88CB4000A8E89 /* getopt_win.h in Headers */,
 				73814B060907FBAB00C478FC /* speex_callbacks.h in Headers */,
+				702EA2B81EF88CB4000A8E89 /* skeleton.h in Headers */,
+				702EA2BC1EF88CB4000A8E89 /* wav_io.h in Headers */,
+				702EA2A71EF86916000A8E89 /* config.h in Headers */,
 				73814B070907FBAD00C478FC /* speex_bits.h in Headers */,
 				73814B080907FBAE00C478FC /* speex.h in Headers */,
 				738837540B193581005C7A69 /* _kiss_fft_guts.h in Headers */,
@@ -384,6 +444,7 @@
 				7388375E0B193581005C7A69 /* pseudofloat.h in Headers */,
 				7388375F0B193581005C7A69 /* quant_lsp_bfin.h in Headers */,
 				738837610B193581005C7A69 /* vorbis_psy.h in Headers */,
+				702EA2BE1EF88CB4000A8E89 /* wave_out.h in Headers */,
 				37CA8E000DD7352A005C8CB6 /* os_support.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +480,7 @@
 				8D07F2C50486CC7A007CD1D0 /* Rez */,
 			);
 			buildRules = (
+				702EA2A51EF86800000A8E89 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -433,9 +495,15 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 73814AE30907FB1E00C478FC /* Build configuration list for PBXProject "Speex" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* Speex */;
 			productRefGroup = 034768DDFF38A45A11DB9C8B /* Products */;
 			projectDirPath = "";
@@ -529,25 +597,32 @@
 				73814B720907FC9900C478FC /* hexc_10_32_table.c in Sources */,
 				73814B730907FC9900C478FC /* hexc_table.c in Sources */,
 				73814B740907FC9900C478FC /* high_lsp_tables.c in Sources */,
+				702EA2BA1EF88CB4000A8E89 /* speexenc.c in Sources */,
 				73814B780907FC9900C478FC /* lpc.c in Sources */,
 				73814B7A0907FC9900C478FC /* lsp_tables_nb.c in Sources */,
 				73814B7B0907FC9900C478FC /* lsp.c in Sources */,
 				73814B800907FC9900C478FC /* ltp.c in Sources */,
+				702EA2B61EF88CB4000A8E89 /* getopt1.c in Sources */,
 				73814B8A0907FC9900C478FC /* modes.c in Sources */,
+				702EA2B71EF88CB4000A8E89 /* skeleton.c in Sources */,
 				73814B8C0907FC9900C478FC /* nb_celp.c in Sources */,
 				73814B8F0907FC9900C478FC /* quant_lsp.c in Sources */,
 				73814B910907FC9900C478FC /* sb_celp.c in Sources */,
 				73814B930907FC9900C478FC /* smallft.c in Sources */,
 				73814B950907FC9900C478FC /* speex_callbacks.c in Sources */,
 				73814B960907FC9900C478FC /* speex_header.c in Sources */,
+				702EA2B91EF88CB4000A8E89 /* speexdec.c in Sources */,
 				73814B970907FC9900C478FC /* speex.c in Sources */,
 				73814B990907FC9900C478FC /* stereo.c in Sources */,
 				73814B9F0907FC9900C478FC /* vbr.c in Sources */,
+				702EA2B51EF88CB4000A8E89 /* getopt.c in Sources */,
 				73814BA40907FC9900C478FC /* vq.c in Sources */,
 				BFF73DD00A78AA170078A4A8 /* window.c in Sources */,
 				738837550B193581005C7A69 /* fftwrap.c in Sources */,
 				738837590B193581005C7A69 /* kiss_fft.c in Sources */,
+				702EA2BD1EF88CB4000A8E89 /* wave_out.c in Sources */,
 				7388375B0B193581005C7A69 /* kiss_fftr.c in Sources */,
+				702EA2BB1EF88CB4000A8E89 /* wav_io.c in Sources */,
 				738837600B193581005C7A69 /* vorbis_psy.c in Sources */,
 				37CA8DEB0DD73333005C8CB6 /* modes_wb.c in Sources */,
 			);
@@ -580,11 +655,14 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Speex_Prefix.pch;
+				HAVE_CONFIG_H = 1;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/Frameworks;
 				LIBRARY_STYLE = DYNAMIC;
 				MACH_O_TYPE = mh_dylib;
+				OTHER_CFLAGS = "-DHAVE_CONFIG_H=1";
 				PRODUCT_NAME = Speex;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = YES;
 			};
@@ -601,11 +679,18 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Speex_Prefix.pch;
+				HAVE_CONFIG_H = 1;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/Frameworks;
 				LIBRARY_STYLE = DYNAMIC;
 				MACH_O_TYPE = mh_dylib;
+				OTHER_CFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DHAVE_CONFIG_H=1",
+					"-falign-loops=16",
+				);
 				PRODUCT_NAME = Speex;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = NO;
 			};
