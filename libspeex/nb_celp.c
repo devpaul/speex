@@ -1330,6 +1330,12 @@ static void nb_decode_lost(DecState *st, spx_word16_t *out, char *stack)
 /* Just so we don't need to carry the complete wideband mode information */
 static const int wb_skip_table[8] = {0, 36, 112, 192, 352, 0, 0, 0};
 
+/**
+ * Start of frame decoding
+ * state {void*}
+ * bits {SpeexBits*} Bit-packing data structure representing (part of) a bit-stream.
+ * vout {void*}
+ */
 int nb_decode(void *state, SpeexBits *bits, void *vout)
 {
    DecState *st;
@@ -1371,6 +1377,7 @@ int nb_decode(void *state, SpeexBits *bits, void *vout)
          return 0;
       }
 
+// encode_submode is always true per the Speex standard
       if (st->encode_submode)
       {
 
@@ -1477,7 +1484,9 @@ int nb_decode(void *state, SpeexBits *bits, void *vout)
    }
 
    ALLOC(qlsp, NB_ORDER, spx_lsp_t);
-
+    
+/// #define SUBMODE(x) st->submodes[st->submodeID]->x
+    
    /* Unquantize LSPs */
    SUBMODE(lsp_unquant)(qlsp, NB_ORDER, bits);
 
@@ -1547,6 +1556,8 @@ int nb_decode(void *state, SpeexBits *bits, void *vout)
    if (st->submodeID>1)
       st->dtx_enabled=0;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// START OF SUBFRAME PROCESSING LOOP
    /*Loop on subframes */
    for (sub=0;sub<NB_NB_SUBFRAMES;sub++)
    {
@@ -1712,7 +1723,9 @@ int nb_decode(void *state, SpeexBits *bits, void *vout)
 
       }
    }
-
+// END OF SUBFRAME LOOP
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
    ALLOC(interp_qlsp, NB_ORDER, spx_lsp_t);
 
    if (st->lpc_enh_enabled && SUBMODE(comb_gain)>0 && !st->count_lost)
@@ -1747,6 +1760,9 @@ int nb_decode(void *state, SpeexBits *bits, void *vout)
       }
    }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SECOND SUBFRAME LOOP
+// Cleanup interpolate and clean up quanitization
    /*Loop on subframes */
    for (sub=0;sub<NB_NB_SUBFRAMES;sub++)
    {
@@ -1782,7 +1798,9 @@ int nb_decode(void *state, SpeexBits *bits, void *vout)
          st->interp_qlpc[i] = ak[i];
 
    }
-
+// END OF SECOND SUBFRAME LOOP
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
    if (st->highpass_enabled)
       highpass(out, out, NB_FRAME_SIZE, (st->isWideband?HIGHPASS_WIDEBAND:HIGHPASS_NARROWBAND)|HIGHPASS_OUTPUT, st->mem_hp);
    /*for (i=0;i<NB_FRAME_SIZE;i++)

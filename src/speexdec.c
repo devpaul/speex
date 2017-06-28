@@ -596,7 +596,16 @@ int main(int argc, char **argv)
 
    speex_bits_init(&bits);
    /*Main decoding loop*/
-
+    
+    
+// variables
+// os = ogg stream
+// oy = ogg sync state
+// og = ogg page
+// op = ogg packet - https://github.com/xiph/ogg/blob/master/include/ogg/ogg.h#L90
+// bits = SpeexBits (from speex_bits.h)
+// st = DecState (Speex decoder state)
+    
    while (1)
    {
       char *data;
@@ -607,22 +616,29 @@ int main(int argc, char **argv)
       nb_read = fread(data, sizeof(char), 200, fin);
       ogg_sync_wrote(&oy, nb_read);
 
+// Loop over OGG pages, 1) page returned; 0) need more data; -1) recapture (missing data)
       /*Loop for all complete pages we got (most likely only one)*/
       while (ogg_sync_pageout(&oy, &og)==1)
       {
          int packet_no;
+// Set up the ogg stream once
          if (stream_init == 0) {
             ogg_stream_init(&os, ogg_page_serialno(&og));
             stream_init = 1;
          }
+// if the stream serial number is different from the page serial number
          if (ogg_page_serialno(&og) != os.serialno) {
             /* so all streams are read. */
+// update the stream serial number so we'll get it in the next page
             ogg_stream_reset_serialno(&os, ogg_page_serialno(&og));
          }
          /*Add page to the bitstream*/
+// Add the page to the Ogg stream
          ogg_stream_pagein(&os, &og);
+// granule pos is a 64-bit number
          page_granule = ogg_page_granulepos(&og);
          page_nb_packets = ogg_page_packets(&og);
+// TODO why are we skipping samples here?
          if (page_granule>0 && frame_size)
          {
             /* FIXME: shift the granule values if --force-* is specified */
@@ -639,16 +655,22 @@ int main(int argc, char **argv)
          last_granule = page_granule;
          /*Extract all available packets*/
          packet_no=0;
+// loop until end of stream marker
+// ogg_stream_packetout takes an ogg stream and fills a reference to an ogg packet (op)
          while (!eos && ogg_stream_packetout(&os, &op) == 1)
          {
+// look for the Speex header
             if (op.bytes>=5 && !memcmp(op.packet, "Speex", 5)) {
                speex_serialno = os.serialno;
             }
+// don't process the page if speex hasn't been initialized
             if (speex_serialno == -1 || os.serialno != speex_serialno)
                break;
             /*If first packet, process as Speex header*/
+// Speex header processing
             if (packet_count==0)
             {
+// initialize decoder data
                st = process_header(&op, enh_enabled, &frame_size, &granule_frame_size, &rate, &nframes, forceMode, &channels, &stereo, &extra_headers, quiet);
                if (!st)
                   exit(1);
@@ -658,29 +680,41 @@ int main(int argc, char **argv)
                fout = out_file_open(outFile, rate, &channels);
 
             } else if (packet_count==1)
+// Speex comment processing
             {
                if (!quiet)
                   print_comments((char*)op.packet, op.bytes);
+// Ignore extra headers
             } else if (packet_count<=1+extra_headers)
             {
                /* Ignore extra headers */
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Speex process audio
             } else {
                int lost=0;
                packet_no++;
+// Code for simulating packet loss
                if (loss_percent>0 && 100*((float)rand())/RAND_MAX<loss_percent)
                   lost=1;
 
+// Check for the end of Speex stream
                /*End of stream condition*/
                if (op.e_o_s && os.serialno == speex_serialno) /* don't care for anything except speex eos */
                   eos=1;
 
                /*Copy Ogg packet to Speex bitstream*/
+// From bits.c - copy packet to bits
                speex_bits_read_from(&bits, (char*)op.packet, op.bytes);
+// nframes is usually 1 speex frame per ogg packet
                for (j=0;j!=nframes;j++)
                {
                   int ret;
                   /*Decode frame*/
+// simulated packet loss
                   if (!lost)
+//*** Speex frame decode
+// (see nb_celp.c::nb_decode (redirected from modes.c))
+// Output is an array of shorts sizes to the max Speex frame size (2000)
                      ret = speex_decode_int(st, &bits, output);
                   else
                      ret = speex_decode_int(st, NULL, output);
@@ -688,6 +722,7 @@ int main(int argc, char **argv)
                   /*for (i=0;i<frame_size*channels;i++)
                     printf ("%d\n", (int)output[i]);*/
 
+// START OF error handling
                   if (ret==-1)
                      break;
                   if (ret==-2)
@@ -700,9 +735,12 @@ int main(int argc, char **argv)
                      fprintf (stderr, "Decoding overflow: corrupted stream?\n");
                      break;
                   }
+// END OF error handling
                   if (channels==2)
+// TODO figure out why speex is decoding output to stereo
                      speex_decode_stereo_int(output, frame_size, &stereo);
 
+// Optionally print bit rate information
                   if (print_bitrate) {
                      spx_int32_t tmp;
                      char ch=13;
@@ -711,6 +749,7 @@ int main(int argc, char **argv)
                      fprintf (stderr, "Bitrate is use: %d bps     ", tmp);
                   }
                   /*Convert to short and save to output file*/
+// Output to a file
                   if (strlen(outFile)!=0)
                   {
                      for (i=0;i<frame_size*channels;i++)
@@ -740,6 +779,7 @@ int main(int argc, char **argv)
                            new_frame_size = frame_size;
                         /*printf ("chopping end: %d %d %d\n", new_frame_size, packet_length, packet_no);*/
                      }
+// Play audio
                      if (new_frame_size>0)
                      {
 #if defined WIN32 || defined _WIN32
@@ -757,10 +797,12 @@ int main(int argc, char **argv)
             packet_count++;
          }
       }
+// END OF SPEEX LOOP
       if (feof(fin))
          break;
 
    }
+// END OF PLAY LOOP
 
    if (fout && wav_format)
    {

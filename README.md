@@ -33,5 +33,14 @@
 
 
 ## Speex Decoder
-* 
-* * libspeex/speex.c:: speex_decode_int()
+
+From src/speexdec.c
+
+* process_header()
+	* speex_lib_get_mode(modeID)
+	* speex_decoder_init(mode)
+	* speex_decoder_ctl(...)
+* speex_bits_read_from(&bits, op.packet, op.bytes)
+* loop over frames
+	* ret = speex_decode_int(st, &bits, output)
+	* speex_decode_stereo_int(output, frame_size, &stereo)
