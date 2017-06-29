@@ -17,7 +17,7 @@
 * install dependencies
 	* 'libogg' from https://www.xiph.org/downloads/
 * ./autogen.sh
-* GCFLAGS=-ggdb ./configure
+* CFLAGS=-g ./configure
 	* setting the GCFLAGS environment variable compiles binary with debugging symbols and prevents many optimizations from changing code in ways that make debugging hard
 * make
 
