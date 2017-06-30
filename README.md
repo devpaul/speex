@@ -38,7 +38,7 @@
 	* unzip libogg-1.3.2.zip
 	* open libogg-1.3.2\win32\vs2010\libogg_dynamic.sln in Visual Studio
 		* confirm dialog to "Retarget Projects" if prompted
-		* right click on the libogg poject in th `libogg_dyanmic` solution (in Solution Explorer) and select `build`
+		* right click on the libogg project in th `libogg_dynamic` solution (in Solution Explorer) and select `build`
 * compile speexdec
 	* open `{speexDirectory}\win32\VS2008\libspeex.sln` in Visual Studio
 	* confirm one-way upgrade when prompted
@@ -61,7 +61,7 @@
 				* `{oggDirectory}\include`
 		* repeat process for the `speexdec` project
 	* add linker reference to `libogg.lib`
-		* right click on the `speexdec` project in the Soluton Explorer and select `Properties`
+		* right click on the `speexdec` project in the Solution Explorer and select `Properties`
 		* Open Configuration Properties -> Linker -> Input
 		* Edit the Additional Dependencies option
 			* add an entry for `libogg.lib`
@@ -79,7 +79,7 @@
 		* Navigate to Configuration Properties -> Debugging
 		* edit the Command Arguments entry to include the arguments
 			* these are listed as they would be on the command line - they don't have to be quoted, etc
-			* two argumetns are required - the input file and the output name
+			* two arguments are required - the input file and the output name
 				* example: `{jlgDirectory}\support\assets\audio\securus_demo_rtmr_audio\83258.spx .\out.wav`
 	* set breakpoints at desired locations
 	* run debugger with <F5> key
