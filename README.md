@@ -4,11 +4,32 @@
 
 ### Mac
 
+#### Production
+
 * install dependencies
 	* autoconf automake libtool
 * ./autoconf.sh
 * ./configure
 * make
+
+#### Debug
+
+* install dependencies
+	* 'libogg' from https://www.xiph.org/downloads/
+* ./autogen.sh
+* CFLAGS=-g ./configure
+	* setting the GCFLAGS environment variable compiles binary with debugging symbols and prevents many optimizations from changing code in ways that make debugging hard
+* make
+
+* debugging with VS Code
+	* select debug mode
+	* create a launch profile (environment = C++ (GDB/LLDB))
+	* change program to `${workspaceRoot}/src/.libs/speexdec`
+	* change cwd to `${workspaceRoot}/src/.libs`
+	* add at least two args
+		* First arg is fully-qualified path to input file.
+		* Second arg is path to output file. Add `.wav` suffix to generate wav file
+	* start debugger (Debug mode -> Green play button or <F5>)
 
 ### XCode
 
