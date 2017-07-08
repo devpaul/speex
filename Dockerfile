@@ -2,7 +2,8 @@
 # run: docker
 FROM ubuntu
 
-RUN apt-get update && apt-get install -y git cmake gcc g++ python
+RUN apt-get update && \
+    apt-get install -y git cmake gcc g++ python build-essential clang wget
 RUN git clone https://github.com/juj/emsdk.git
 WORKDIR /emsdk
 ENV CXX=/usr/bin/g++
